@@ -45,8 +45,72 @@
 
 <!-- react 플러그인 include   -->
 <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js"> /* import { React} from 'react'; */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">/* import { ReactDOM } from 'react-dom'; */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* JSX를 자바스크립트로 변환 */</script>
+<script type="text/babel">
+    console.log(React);
+    console.log(ReactDOM);
+
+    /* 단축키: rcfc */
+
+    class LetterCard extends React.Component {
+
+        render() {
+            console.log("bgcolor: ", this.props.bgcolor);
+
+            //방식1
+            var styleLabel = {
+                "padding": "10px",
+                "margin": "10px",
+                "color": "#333333",
+                "display": "inline-block",
+                "fontFamily": "monospace",
+                "fontSize" : "32px",
+                "textAlign": "center",
+                //"backgroundColor": this.props.bgcolor,
+            }
+
+            //방식2. spread연산자를 사용
+            var bgcolor = {
+                backgroundColor: this.props.bgcolor
+            }
+            var styleLabel2 = {
+                ...styleLabel,
+                ...bgcolor
+            }
+
+            // return (
+            //     <div style={styleLabel2}>
+            //         {this.props.letter}
+            //     </div>
+            // );
+            // <LetterCard bgcolor={"#58B3FF"} letter={"A"}></LetterCard>
+            // <LetterCard bgcolor={"#FF605F"} letter={"E"}></LetterCard>
+            // <LetterCard bgcolor={"#FFD52E"} letter={"I"}></LetterCard>
+            // <LetterCard bgcolor={"#49DD8E"} letter={"O"}></LetterCard>
+            // <LetterCard bgcolor={"#AE99FF"} letter={"U"}></LetterCard>
+
+            return (
+                <div style={styleLabel2}>
+                    {this.props.children}
+                </div>
+            );
+        }
+
+    }
+    
+    ReactDOM.render(
+        <div>
+            <LetterCard bgcolor={"#58B3FF"}>A</LetterCard>
+            <LetterCard bgcolor={"#FF605F"}>E</LetterCard>
+            <LetterCard bgcolor={"#FFD52E"}>I</LetterCard>
+            <LetterCard bgcolor={"#49DD8E"}>O</LetterCard>
+            <LetterCard bgcolor={"#AE99FF"}>U</LetterCard>
+        </div>
+        , document.getElementById('app')
+    )
+
+</script>
 
 
-
-
-

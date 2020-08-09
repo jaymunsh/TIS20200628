@@ -66,7 +66,41 @@
             }
     </xmp>
 
+    <div id="app"></div>
 
 </body>
 
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js"> /* import { React} from 'react'; */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">/* import { ReactDOM } from 'react-dom'; */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* JSX를 자바스크립트로 변환 */</script>
+<script type="text/babel">
+    console.log(React);
+    console.log(ReactDOM);
+
+    //컴포넌트 만들기
+    class CustomTextInput extends React.Component {
+        constructor(props){
+            super(props)
+
+            //Ref생성
+            this.refInput = React.createRef();
+        }
+        componentDidMount(){
+            this.refInput.current.focus();
+        }
+        render() {
+            return (
+                <div>
+                    <input type="text"  ref={this.refInput}/>
+                </div>
+            );
+        }
+    }
+    
+    ReactDOM.render(
+        <CustomTextInput />
+        , document.getElementById('app')
+    )
+
+</script>
