@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <xmp>
+        jQueyry를 사용하여 "Hello, jQery!!!!" 를 출력한다.
+    </xmp>
+    <hr />
+
+    <div id="app">
+        <!-- 여기에  Hello, jQery!!!! 출력 -->
+    </div>
+</body>
+
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">/* jQuery library */</script>
+<script>
+    $("#app").text("Hello, jQuery!!!!");
+    //$("#app").html("Hello, jQery!!!!");
+
+    var app = document.getElementById("app");
+    app.innerText = "Hello, jQuery!!!!";
+</script>

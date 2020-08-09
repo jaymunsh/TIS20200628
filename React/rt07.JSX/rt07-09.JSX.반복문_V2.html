@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css" />
+</head>
+
+<body>
+    <xmp>
+        JSX 에서 반복문을 사용하는 방법을 배운다.
+
+        참고: https://flaviocopes.com/react-how-to-loop/
+    </xmp>
+    <hr>
+
+    <div id="wrap1"></div>
+    <hr>
+    <div id="wrap2"></div>
+    <hr>
+    <div id="wrap3"></div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<script type="text/babel">
+    console.log(React);
+    console.log(React.Component);
+    console.log(ReactDOM);
+
+    const elements = ["one", "two", "three"];
+
+    //4) React Component
+    class Loop1 extends React.Component {
+        render() {
+            const items = this.props.items;
+            // for ~ in 예제
+            let arrs = [];
+            for (let index in elements){
+                arrs.push(<li key={index}>{items[index]}</li>);
+            }
+            return (
+                <div>
+                    <h1>Loop1</h1>
+                   {arrs} 
+                </div>
+            );
+        }
+    }
+
+    class Loop2 extends React.Component {
+        render() {
+            const items = this.props.items;
+            // for ~ of 예제
+            let arrs = [];
+
+            // let[x, y] = [1, 2];
+            // elements.entries()는 [key, value] 값을 리턴한다.
+            for (let [key, val] of items.entries()){
+                arrs.push(<li key={key}>{val}</li>)
+            }
+            return (
+                <div>
+                    <h1>Loop2</h1>
+                    {arrs} 
+                </div>
+            );
+        }
+    }
+
+    class Loop3 extends React.Component {
+        render() {
+            const items = this.props.items;
+            return (
+                <div>
+                    <h1>Loop3</h1>
+                    {items.map(function(value, key){
+                        return (<li key={key}>{value}</li>)
+                    })}
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <Loop1 items={elements}/>, document.getElementById("wrap1")
+    );
+    ReactDOM.render(
+        <Loop2 items={elements}/>, document.getElementById("wrap2")
+    );
+    ReactDOM.render(
+        <Loop3 items={elements}/>, document.getElementById("wrap3")
+    );
+</script>
+
+
+
+
